@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Formulario } from "../formulario/formulario";
+import { Resultado } from "../resultado/resultado";
 
 // NgModel: permiten el enlace bidireccional entre las propiedades del componente (operandoA y operandoB) y los campos de entrada (<input>).
 
 @Component({
     selector: 'app-operadores',
-    imports: [FormsModule],
+    imports: [FormsModule, Formulario, Resultado],
     templateUrl: './operadores.html',
     styleUrl: './operadores.css'
 })
 
 export class Operadores {
-    operadorA: number = 0;
-    operadorB: number = 0;
-    resultado: number = 0;
+    resultadoPadre: number | null = null;
     
-    sumar(): void{
-        this.resultado = this.operadorA + this.operadorB;
+    procesarResultado(resultado: number) {
+        this.resultadoPadre = resultado;
     }
 }
